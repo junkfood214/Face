@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table class="table table-striped">
+    <h2><a class="btn btn-sm btn-success" th:href="@{/toAdd}">添加员工</a></h2>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>学号</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${users}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getPwd()}"></td>
+        <td>
+            <a class="btn btn-sm btn-primary" th:href="@{/user/{id}(id=${user.getId()})}">编辑</a>
+            <a class="btn btn-sm btn-danger" th:href="@{/delUser/{id}(id=${user.getId()})}">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a class="btn btn-sm btn-danger" th:href="@{/user/logout}">登出</a>
+</body>
+</html>
